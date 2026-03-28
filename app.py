@@ -387,44 +387,32 @@ with tab1:
             st.markdown("---")
             st.subheader("GPA Equivalent")
             
-            if pred_score >= 97:
+            if pred_score >= 90:
                 gpa = 4.0
                 letter_grade = "A+"
-            elif pred_score >= 93:
-                gpa = 4.0
-                letter_grade = "A"
-            elif pred_score >= 90:
-                gpa = 3.7
-                letter_grade = "A-"
-            elif pred_score >= 87:
-                gpa = 3.3
-                letter_grade = "B+"
-            elif pred_score >= 83:
-                gpa = 3.0
-                letter_grade = "B"
             elif pred_score >= 80:
-                gpa = 2.7
-                letter_grade = "B-"
-            elif pred_score >= 77:
-                gpa = 2.3
+                gpa = 3.6
+                letter_grade = "A"
+            elif pred_score >= 70:
+                gpa = 3.2
+                letter_grade = "B+"
+            elif pred_score >= 60:
+                gpa = 2.8
+                letter_grade = "B"
+            elif pred_score >= 50:
+                gpa = 2.4
                 letter_grade = "C+"
-            elif pred_score >= 73:
+            elif pred_score >= 40:
                 gpa = 2.0
                 letter_grade = "C"
-            elif pred_score >= 70:
-                gpa = 1.7
-                letter_grade = "C-"
-            elif pred_score >= 67:
-                gpa = 1.3
+            elif pred_score >= 30:
+                gpa = 1.8
                 letter_grade = "D+"
-            elif pred_score >= 63:
-                gpa = 1.0
+            elif pred_score >= 20:
+                gpa = 1.6
                 letter_grade = "D"
-            elif pred_score >= 60:
-                gpa = 0.7
-                letter_grade = "D-"
             else:
-                gpa = 0.0
+                gpa = 0.8
                 letter_grade = "F"
             
             gpa_col1, gpa_col2, gpa_col3 = st.columns(3)

@@ -78,31 +78,23 @@ def _build_input_df(payload: StudentData) -> pd.DataFrame:
 
 
 def _gpa_letter(pred_score: float) -> Dict[str, Any]:
-    if pred_score >= 97:
-        return {"gpa": 4.0, "grade": "A+"}
-    if pred_score >= 93:
-        return {"gpa": 4.0, "grade": "A"}
     if pred_score >= 90:
-        return {"gpa": 3.7, "grade": "A-"}
-    if pred_score >= 87:
-        return {"gpa": 3.3, "grade": "B+"}
-    if pred_score >= 83:
-        return {"gpa": 3.0, "grade": "B"}
+        return {"gpa": 4.0, "grade": "A+"}
     if pred_score >= 80:
-        return {"gpa": 2.7, "grade": "B-"}
-    if pred_score >= 77:
-        return {"gpa": 2.3, "grade": "C+"}
-    if pred_score >= 73:
-        return {"gpa": 2.0, "grade": "C"}
+        return {"gpa": 3.6, "grade": "A"}
     if pred_score >= 70:
-        return {"gpa": 1.7, "grade": "C-"}
-    if pred_score >= 67:
-        return {"gpa": 1.3, "grade": "D+"}
-    if pred_score >= 63:
-        return {"gpa": 1.0, "grade": "D"}
+        return {"gpa": 3.2, "grade": "B+"}
     if pred_score >= 60:
-        return {"gpa": 0.7, "grade": "D-"}
-    return {"gpa": 0.0, "grade": "F"}
+        return {"gpa": 2.8, "grade": "B"}
+    if pred_score >= 50:
+        return {"gpa": 2.4, "grade": "C+"}
+    if pred_score >= 40:
+        return {"gpa": 2.0, "grade": "C"}
+    if pred_score >= 30:
+        return {"gpa": 1.8, "grade": "D+"}
+    if pred_score >= 20:
+        return {"gpa": 1.6, "grade": "D"}
+    return {"gpa": 0.8, "grade": "F"}
 
 
 @app.get("/")
