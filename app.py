@@ -320,7 +320,7 @@ with tab1:
     # Prediction button
     col_button = st.columns([1, 1, 1])[1]
     with col_button:
-        predict_button = st.button("GENERATE PREDICTION", use_container_width=True)
+        predict_button = st.button("GENERATE PREDICTION", width='stretch')
     
     # Display prediction result
     if predict_button:
@@ -659,7 +659,7 @@ with tab2:
     }
     
     feature_df = pd.DataFrame(feature_data)
-    st.dataframe(feature_df, use_container_width=True, hide_index=True)
+    st.dataframe(feature_df, width='stretch', hide_index=True)
     
     st.markdown("---")
     st.subheader("Key Insights")
