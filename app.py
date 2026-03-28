@@ -6,7 +6,6 @@ import joblib
 # Set page config
 st.set_page_config(
     page_title="Student Exam Score Predictor",
-    page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -183,7 +182,7 @@ with st.sidebar:
     st.header("Project Information")
     st.markdown("""
     ### Developer
-    **Name:** Bichan Poudel
+    **Name:** Bichan Poudel  
     
     **Program:** CSIT (7th Semester)
     
@@ -194,6 +193,12 @@ with st.sidebar:
     ### Project Details
     This application predicts student exam scores using machine learning
     based on academic, lifestyle, and personal factors.
+    
+    ### Key Features
+    - **Score Prediction**: ML-based exam score forecasting
+    - **GPA Conversion**: Automatic GPA and letter grade calculation
+    - **Personalized Suggestions**: Data-driven improvement recommendations
+    - **Performance Analytics**: Comprehensive score analysis
     
     ### Model Configuration
     - **Algorithm:** Linear Regression
@@ -378,6 +383,209 @@ with tab1:
                     status = "Below Average"
                 st.metric("Performance Status", status)
             
+            # GPA Conversion
+            st.markdown("---")
+            st.subheader("GPA Equivalent")
+            
+            if pred_score >= 97:
+                gpa = 4.0
+                letter_grade = "A+"
+            elif pred_score >= 93:
+                gpa = 4.0
+                letter_grade = "A"
+            elif pred_score >= 90:
+                gpa = 3.7
+                letter_grade = "A-"
+            elif pred_score >= 87:
+                gpa = 3.3
+                letter_grade = "B+"
+            elif pred_score >= 83:
+                gpa = 3.0
+                letter_grade = "B"
+            elif pred_score >= 80:
+                gpa = 2.7
+                letter_grade = "B-"
+            elif pred_score >= 77:
+                gpa = 2.3
+                letter_grade = "C+"
+            elif pred_score >= 73:
+                gpa = 2.0
+                letter_grade = "C"
+            elif pred_score >= 70:
+                gpa = 1.7
+                letter_grade = "C-"
+            elif pred_score >= 67:
+                gpa = 1.3
+                letter_grade = "D+"
+            elif pred_score >= 63:
+                gpa = 1.0
+                letter_grade = "D"
+            elif pred_score >= 60:
+                gpa = 0.7
+                letter_grade = "D-"
+            else:
+                gpa = 0.0
+                letter_grade = "F"
+            
+            gpa_col1, gpa_col2, gpa_col3 = st.columns(3)
+            with gpa_col1:
+                st.metric("GPA Score", f"{gpa:.1f}", "out of 4.0")
+            with gpa_col2:
+                st.metric("Letter Grade", letter_grade)
+            with gpa_col3:
+                st.metric("Percentage", f"{pred_score:.1f}%")
+            
+            # Performance Improvement Suggestions
+            st.markdown("---")
+            st.subheader("Performance Improvement Suggestions")
+            
+            suggestions = []
+            
+            # Study hours analysis
+            if study_hours_per_day < 2:
+                suggestions.append("**Increase Study Time**: Consider studying at least 2-3 hours daily. Current study time is below optimal levels.")
+            elif study_hours_per_day < 4:
+                suggestions.append("**Study Time Good**: Your current study hours are adequate, but increasing to 4+ hours could further improve performance.")
+            else:
+                suggestions.append("**Excellent Study Habits**: Your study time is optimal for academic success.")
+            
+            # Attendance analysis
+            if attendance_percentage < 80:
+                suggestions.append("**Improve Attendance**: Regular class attendance is crucial. Aim for 90%+ attendance rate.")
+            elif attendance_percentage < 90:
+                suggestions.append("**Attendance Satisfactory**: Consider attending all classes to maximize learning opportunities.")
+            else:
+                suggestions.append("**Perfect Attendance**: Excellent attendance record - keep it up!")
+            
+            # Sleep analysis
+            if sleep_hours < 7:
+                suggestions.append("**Prioritize Sleep**: Getting 7-9 hours of sleep nightly is essential for academic performance and memory retention.")
+            elif sleep_hours < 8:
+                suggestions.append("**Sleep Adequate**: Your sleep hours are good, but 8+ hours would be optimal.")
+            else:
+                suggestions.append("**Optimal Sleep**: Excellent sleep habits supporting academic success.")
+            
+            # Social media analysis
+            if social_media_hours > 3:
+                suggestions.append("**Reduce Social Media**: High social media usage may impact focus. Consider limiting to 1-2 hours daily.")
+            elif social_media_hours > 1:
+                suggestions.append("**Social Media Moderate**: Your usage is reasonable, but minimizing distractions during study time would help.")
+            else:
+                suggestions.append("**Good Digital Habits**: Low social media usage supports better concentration.")
+            
+            # Entertainment analysis
+            if netflix_hours > 2:
+                suggestions.append("**Balance Entertainment**: Excessive entertainment time may affect study focus. Consider reducing to 1-2 hours daily.")
+            elif netflix_hours > 1:
+                suggestions.append("**Entertainment Balanced**: Your entertainment time is moderate - ensure it doesn't interfere with studies.")
+            else:
+                suggestions.append("**Well-Balanced**: Good balance between entertainment and academic priorities.")
+            
+            # Exercise analysis
+            if exercise_frequency < 3:
+                suggestions.append("**Increase Physical Activity**: Regular exercise (3-5 days/week) improves concentration and reduces stress.")
+            elif exercise_frequency < 5:
+                suggestions.append("**Exercise Regular**: Your exercise frequency is good - consider adding more variety.")
+            else:
+                suggestions.append("**Active Lifestyle**: Excellent exercise habits supporting both physical and mental health.")
+            
+            # Mental health analysis
+            if mental_health_rating < 6:
+                suggestions.append("**Mental Health Support**: Consider speaking with a counselor or practicing stress management techniques.")
+            elif mental_health_rating < 8:
+                suggestions.append("**Mental Health Good**: Continue maintaining your mental well-being through healthy habits.")
+            else:
+                suggestions.append("**Strong Mental Health**: Excellent mental health foundation for academic success.")
+            
+            # Part-time job analysis
+            if part_time_job == "Yes":
+                suggestions.append("**Work-Life Balance**: Working part-time while studying requires good time management. Ensure work doesn't exceed 15-20 hours/week.")
+            
+            # Extracurricular analysis
+            if extracurricular_participation == "No":
+                suggestions.append("**Extracurricular Activities**: Consider joining clubs or sports to develop soft skills and reduce academic stress.")
+            else:
+                suggestions.append("**Well-Rounded**: Participation in extracurricular activities supports overall development.")
+            
+            # Diet analysis
+            if diet_quality == "Poor":
+                suggestions.append("**Improve Nutrition**: A balanced diet with fruits, vegetables, and proteins supports brain function and energy levels.")
+            elif diet_quality == "Average":
+                suggestions.append("**Nutrition Adequate**: Consider incorporating more nutrient-rich foods for optimal brain performance.")
+            else:
+                suggestions.append("**Excellent Nutrition**: Good dietary habits supporting academic performance.")
+            
+            # Internet quality analysis
+            if internet_quality == "Poor":
+                suggestions.append("**Improve Internet Access**: Stable internet is crucial for online learning and research. Consider upgrading your connection.")
+            elif internet_quality == "Average":
+                suggestions.append("**Internet Satisfactory**: Your connection is adequate, but faster speeds could enhance online learning.")
+            else:
+                suggestions.append("**Optimal Connectivity**: Excellent internet access supporting digital learning.")
+            
+            # Parental education analysis
+            if parental_education_level == "High School":
+                suggestions.append("**Seek Academic Support**: Consider tutoring or study groups to supplement learning resources.")
+            elif parental_education_level == "Bachelor":
+                suggestions.append("**Good Support System**: Parental education background provides adequate academic guidance.")
+            else:
+                suggestions.append("**Strong Academic Foundation**: Advanced parental education provides excellent academic support.")
+            
+            # Age-based suggestions
+            if age < 18:
+                suggestions.append("**Young Learner**: Focus on building strong study habits and time management skills for future academic success.")
+            elif age > 25:
+                suggestions.append("**Mature Student**: Leverage life experience and focus on efficient study techniques tailored to your learning style.")
+            
+            # Display suggestions
+            if suggestions:
+                for suggestion in suggestions:
+                    st.markdown(f"- {suggestion}")
+            else:
+                st.success("**Excellent Profile**: All your habits and factors are optimally aligned for academic success!")
+            
+            # Overall performance summary
+            st.markdown("---")
+            st.subheader("Overall Assessment")
+            
+            positive_factors = []
+            improvement_areas = []
+            
+            if study_hours_per_day >= 3: positive_factors.append("Study Hours")
+            else: improvement_areas.append("Study Hours")
+            
+            if attendance_percentage >= 85: positive_factors.append("Attendance")
+            else: improvement_areas.append("Attendance")
+            
+            if sleep_hours >= 7: positive_factors.append("Sleep")
+            else: improvement_areas.append("Sleep")
+            
+            if social_media_hours <= 2: positive_factors.append("Digital Habits")
+            else: improvement_areas.append("Digital Habits")
+            
+            if exercise_frequency >= 3: positive_factors.append("Physical Activity")
+            else: improvement_areas.append("Physical Activity")
+            
+            if mental_health_rating >= 7: positive_factors.append("Mental Health")
+            else: improvement_areas.append("Mental Health")
+            
+            if diet_quality != "Poor": positive_factors.append("Nutrition")
+            else: improvement_areas.append("Nutrition")
+            
+            assessment_col1, assessment_col2 = st.columns(2)
+            
+            with assessment_col1:
+                if positive_factors:
+                    st.success(f"✅ **Strengths ({len(positive_factors)})**: {', '.join(positive_factors)}")
+                else:
+                    st.info("📈 **Growth Opportunity**: Focus on developing strong academic habits.")
+            
+            with assessment_col2:
+                if improvement_areas:
+                    st.warning(f"**Focus Areas ({len(improvement_areas)})**: {', '.join(improvement_areas)}")
+                else:
+                    st.success("🌟 **Well-Balanced**: All key areas are performing well!")
+            
         except Exception as e:
             st.error(f"Error during prediction: {str(e)}")
             st.info("Please ensure all fields are filled correctly.")
@@ -506,7 +714,27 @@ with tab3:
     - Review the predicted exam score
     - Analyze the performance metrics provided
     
-    ### Important Notes
+    **Step 8: Review GPA & Suggestions**
+    - Check your GPA equivalent and letter grade
+    - Read personalized improvement suggestions
+    - Review overall assessment and focus areas
+    
+    ### New Features
+    
+    **GPA Conversion**
+    - Automatic conversion of percentage scores to GPA (4.0 scale)
+    - Letter grade assignment (A+, A, B+, B, etc.)
+    - Standard university grading system
+    
+    **Smart Suggestions**
+    - Personalized recommendations based on your input data
+    - Analysis of study habits, sleep, attendance, and lifestyle factors
+    - Actionable advice for performance improvement
+    
+    **Comprehensive Analytics**
+    - Performance percentile ranking
+    - Model confidence levels
+    - Strengths and improvement areas identification
     
     - All fields must be completed for accurate predictions
     - This model works best for students aged 10-30
