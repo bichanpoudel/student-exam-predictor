@@ -37,7 +37,7 @@ ENV/
 Thumbs.db
 
 # Project specific
-*.pkl
+# *.pkl  # Commented out to include best_model.pkl
 *.joblib
 .streamlit/
 *.csv
