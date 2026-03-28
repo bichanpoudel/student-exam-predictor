@@ -234,11 +234,11 @@ student-exam-predictor/
 
 ## License
 
-This project is developed as part of an academic requirement for Tribhuvan University. All rights reserved.
+This project is developed as part of an academic requirement for Tribhuvan University. This project is open-source and available for educational purposes only.
 
 ## Acknowledgments
 
-- **Supervisor**: [Supervisor Name]
+- **Supervisor**: Satya Bahadur Maharjan
 - **Department**: Computer Science and Information Technology
 - **University**: Tribhuvan University
 - **Dataset Source**: Student performance data collected for research purposes
@@ -246,10 +246,9 @@ This project is developed as part of an academic requirement for Tribhuvan Unive
 ## Contact Information
 
 - **Developer**: Bichan Poudel
-- **Email**: [Your email address]
-- **LinkedIn**: [Your LinkedIn profile]
-- **GitHub**: [Your GitHub username]
-
+- **Email**: bichanpoudel77@gmail.com
+- **LinkedIn**: [Bichan poudel](https://www.linkedin.com/in/bichanpoudel/)
+- **GitHub**: https://github.com/bichanpoudel/
 ---
 
 **Note**: This application is developed for educational and research purposes. For production use, additional validation and security measures should be implemented.
